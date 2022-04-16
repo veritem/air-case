@@ -1,7 +1,8 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { RootResolver } from './resolvers/RootResolver';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { Module } from '@nestjs/common'
+import { GraphQLModule } from '@nestjs/graphql'
+import { UsersModule } from './modules/users.module'
+import { RootResolver } from './resolvers/RootResolver'
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { RootResolver } from './resolvers/RootResolver';
       introspection: true,
       driver: ApolloDriver,
     }),
+    UsersModule,
   ],
   controllers: [],
   providers: [RootResolver],
