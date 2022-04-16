@@ -9,7 +9,7 @@ export class User {
   email: string
 
   @Field(type => String)
-  name: string
+  names: string
 
   @Field(type => String, { nullable: true })
   password: string
