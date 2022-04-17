@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common'
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { CreateTicketInput } from 'src/inputs/ticket.input'
-import { Ticket } from 'src/models/ticket.model'
-import { PrismaService } from 'src/prisma.service'
+import { CreateTicketInput } from '../inputs/ticket.input'
+import { Ticket } from '../models/ticket.model'
+import { PrismaService } from '../prisma.service'
 
 @Resolver(Ticket)
 export class TicketResolver {

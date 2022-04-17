@@ -1,8 +1,8 @@
 import { Inject } from '@nestjs/common'
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { CreatePlaneInput } from 'src/inputs/plane.inputs'
-import { Plane } from 'src/models/plane.model'
-import { PrismaService } from 'src/prisma.service'
+import { CreatePlaneInput } from '../inputs/plane.inputs'
+import { Plane } from '../models/plane.model'
+import { PrismaService } from '../prisma.service'
 
 @Resolver(Plane)
 export class PlanesResolver {

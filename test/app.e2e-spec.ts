@@ -43,7 +43,7 @@ describe('Graphql App Resolver', () => {
       query {
         users {
           id
-          name
+          names
           email
         }
       }
@@ -59,8 +59,10 @@ describe('Graphql App Resolver', () => {
       query {
         planes {
           id
-          name
-          seats
+          arrivalDate
+          updatedAt
+          arrivalAirPort
+          departureDate
         }
       }
     `

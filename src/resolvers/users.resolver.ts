@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Inject } from '@nestjs/common'
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { SignupInput } from 'src/inputs/users.inputs'
-import { PrismaService } from 'src/prisma.service'
-import { hashPassword, validatePassword } from 'src/utils/util-funcs'
+import { SignupInput } from '../inputs/users.inputs'
 import { User } from '../models/user.model'
+import { PrismaService } from '../prisma.service'
+import { hashPassword, validatePassword } from '../utils/util-funcs'
 
 @Resolver(User)
 export class UserResolver {
