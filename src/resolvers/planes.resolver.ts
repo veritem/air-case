@@ -1,14 +1,55 @@
 import { Inject } from '@nestjs/common'
-import { Query, Resolver } from '@nestjs/graphql'
-import { Planet } from 'src/models/plane.model'
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
+import { CreatePlaneInput } from 'src/inputs/plane.inputs'
+import { Plane } from 'src/models/plane.model'
 import { PrismaService } from 'src/prisma.service'
 
-@Resolver(Planet)
+@Resolver(Plane)
 export class PlanesResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query(returns => [Planet], { name: 'planes' })
-  async Allplanets() {
+  @Query(returns => [Plane], { name: 'planes' })
+  async Allplanes() {
     return this.prismaService.plane.findMany()
+  }
+
+  @Query(returns => Plane, { name: 'plane' })
+  async Planed(@Args('id') id: number) {
+    return this.prismaService.plane.findUnique({ where: { id } })
+  }
+
+  @Mutation(returns => Plane, { name: 'createPlane' })
+  async CreatePlane(@Args('data') data: CreatePlaneInput) {
+    return this.prismaService.plane.create({
+      data: {
+        name: data.name,
+        departureAirPort: data.departureAirPort,
+        arrivalAirPort: data.arrivalAirPort,
+        departureDate: data.departureDate,
+        arrivalDate: data.arrivalDate,
+      },
+    })
+  }
+
+  @Mutation(returns => Plane, { name: 'updatePlane' })
+  async UpdatePlane(
+    @Args('id') id: number,
+    @Args('data') data: CreatePlaneInput,
+  ) {
+    return this.prismaService.plane.update({
+      where: { id },
+      data: {
+        name: data.name,
+        departureAirPort: data.departureAirPort,
+        arrivalAirPort: data.arrivalAirPort,
+        departureDate: data.departureDate,
+        arrivalDate: data.arrivalDate,
+      },
+    })
+  }
+
+  @Mutation(returns => Plane, { name: 'deletePlane' })
+  async DeletePlane(@Args('id') id: number) {
+    return this.prismaService.plane.delete({ where: { id } })
   }
 }

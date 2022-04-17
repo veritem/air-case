@@ -23,12 +23,11 @@ model user {
 model plane {
   id               Int      @id @default(autoincrement())
   name             String
-  createdAt        DateTime
   departureAirPort String
   arrivalAirPort   String
   departureDate    DateTime
   arrivalDate      DateTime
-  createAt         DateTime @default(now())
+  createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   tickets          ticket[]
 }

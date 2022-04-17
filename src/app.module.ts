@@ -2,6 +2,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
 import { PlanesModule } from './modules/plane.module'
+import { TicketModule } from './modules/ticket.module'
 import { UsersModule } from './modules/users.module'
 import { RootResolver } from './resolvers/RootResolver'
 
@@ -15,6 +16,7 @@ import { RootResolver } from './resolvers/RootResolver'
     }),
     UsersModule,
     PlanesModule,
+    TicketModule,
   ],
   controllers: [],
   providers: [RootResolver],
