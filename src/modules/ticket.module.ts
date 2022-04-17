@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
-import { TicketResolver } from 'src/resolvers/ticket.resolver'
+import { TicketResolver } from 'src/resolvers/tickets.resolver'
 
 @Module({
   imports: [],

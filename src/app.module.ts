@@ -4,7 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql'
 import { PlanesModule } from './modules/plane.module'
 import { TicketModule } from './modules/ticket.module'
 import { UsersModule } from './modules/users.module'
-import { RootResolver } from './resolvers/RootResolver'
+import { RootResolver } from './resolvers/root.resolver'
 
 @Module({
   imports: [
