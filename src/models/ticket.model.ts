@@ -4,27 +4,27 @@ import { User } from './user.model'
 
 @ObjectType()
 export class Ticket {
-  @Field(type => ID)
+  @Field(() => ID)
   id: string
 
-  @Field(type => String)
+  @Field(() => String)
   userId: number
 
-  @Field(type => String)
+  @Field(() => String)
   planeId: number
 
-  @Field(type => Number)
+  @Field(() => Number)
   price: number
 
-  @Field(type => Plane)
+  @Field(() => Plane)
   plane: Plane
 
-  @Field(type => User)
+  @Field(() => User)
   user: User
 
-  @Field(type => String, { nullable: true })
+  @Field(() => String, { nullable: true })
   createdAt: Date
 
-  @Field(type => String)
+  @Field(() => String)
   updatedAt: Date
 }

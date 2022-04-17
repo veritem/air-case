@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Query, Resolver } from '@nestjs/graphql'
 
 /**
  * This makes apollo server never throw an error on startup.
@@ -8,6 +8,6 @@ import { Query, Resolver } from '@nestjs/graphql';
 export class RootResolver {
   @Query(() => String)
   hello(): string {
-    return 'Hello World!';
+    return 'Hello World!'
   }
 }

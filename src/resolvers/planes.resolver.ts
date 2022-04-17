@@ -8,17 +8,17 @@ import { PrismaService } from 'src/prisma.service'
 export class PlanesResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query(returns => [Plane], { name: 'planes' })
+  @Query(() => [Plane], { name: 'planes' })
   async Allplanes() {
     return this.prismaService.plane.findMany()
   }
 
-  @Query(returns => Plane, { name: 'plane' })
+  @Query(() => Plane, { name: 'plane' })
   async Planed(@Args('id') id: number) {
     return this.prismaService.plane.findUnique({ where: { id } })
   }
 
-  @Mutation(returns => Plane, { name: 'createPlane' })
+  @Mutation(() => Plane, { name: 'createPlane' })
   async CreatePlane(@Args('data') data: CreatePlaneInput) {
     return this.prismaService.plane.create({
       data: {
@@ -31,7 +31,7 @@ export class PlanesResolver {
     })
   }
 
-  @Mutation(returns => Plane, { name: 'updatePlane' })
+  @Mutation(() => Plane, { name: 'updatePlane' })
   async UpdatePlane(
     @Args('id') id: number,
     @Args('data') data: CreatePlaneInput,
@@ -48,7 +48,7 @@ export class PlanesResolver {
     })
   }
 
-  @Mutation(returns => Plane, { name: 'deletePlane' })
+  @Mutation(() => Plane, { name: 'deletePlane' })
   async DeletePlane(@Args('id') id: number) {
     return this.prismaService.plane.delete({ where: { id } })
   }

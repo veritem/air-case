@@ -9,17 +9,17 @@ import { User } from '../models/user.model'
 export class UserResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  @Query(returns => [User], { name: 'users' })
+  @Query(() => [User], { name: 'users' })
   async Allusers() {
     return this.prismaService.user.findMany()
   }
 
-  @Query(returns => User, { name: 'user' })
+  @Query(() => User, { name: 'user' })
   async User(@Args('id') id: number) {
     return this.prismaService.user.findUnique({ where: { id } })
   }
 
-  @Mutation(returns => User, { name: 'signup' })
+  @Mutation(() => User, { name: 'signup' })
   async Signup(@Args('data') data: SignupInput) {
     const userExists = await this.prismaService.user.findFirst({
       where: {
@@ -40,7 +40,7 @@ export class UserResolver {
     })
   }
 
-  @Mutation(returns => User, { name: 'login' })
+  @Mutation(() => User, { name: 'login' })
   async Login(
     @Args('email') email: string,
     @Args('password') password: string,
@@ -64,7 +64,7 @@ export class UserResolver {
     return user
   }
 
-  @Mutation(returns => User, { name: 'updateUser' })
+  @Mutation(() => User, { name: 'updateUser' })
   async UpdateUser(@Args('id') id: number, @Args('data') data: SignupInput) {
     const user = await this.prismaService.user.findUnique({
       where: {
@@ -88,7 +88,7 @@ export class UserResolver {
     })
   }
 
-  @Mutation(returns => User, { name: 'deleteUser' })
+  @Mutation(() => User, { name: 'deleteUser' })
   async DeleteUser(@Args('id') id: number) {
     const user = await this.prismaService.user.findUnique({
       where: {
@@ -107,7 +107,7 @@ export class UserResolver {
     })
   }
 
-  @Mutation(returns => User, { name: 'updatePassword' })
+  @Mutation(() => User, { name: 'updatePassword' })
   async UpdatePassword(
     @Args('id') id: number,
     @Args('password') password: string,
