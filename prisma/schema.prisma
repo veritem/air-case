@@ -39,6 +39,6 @@ model ticket {
   price     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      user     @relation(fields: [userId], references: [id])
-  plane     plane    @relation(fields: [planeId], references: [id])
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plane     plane    @relation(fields: [planeId], references: [id], onDelete: Cascade)
 }
